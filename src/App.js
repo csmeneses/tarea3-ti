@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 const App = () => {
   return (
     <Router>
-      <Route path="/" exact component={Home} />
+      <Route path="/tarea3-ti" exact component={Home} />
     </Router>
   );
 }
