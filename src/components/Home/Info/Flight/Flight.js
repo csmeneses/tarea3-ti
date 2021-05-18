@@ -1,0 +1,108 @@
+import React, { useState, useEffect } from "react";
+
+import axios from 'axios';
+
+import './Flight.css';
+
+const { v4: uuidv4 } = require('uuid');
+
+const Flight = ({ airline, code, destination, origin, passengers, plane, seats }) => {
+
+    const [lugar_dest, setLugar_dest] = useState('');
+    const [lugar_ori, setLugar_ori] = useState('');
+
+    // const destino = () => {
+    //     const lat_dest = destination[0];
+    //     const long_dest = destination[1];
+
+    //     var place_dest = `https://api.mapbox.com/geocoding/v5/mapbox.places/${long_dest},${lat_dest}.json?access_token=pk.eyJ1IjoiY3NtZW5lc2VzIiwiYSI6ImNraWRueWxkZjB0cHQyeG80OHJ0cjhwMG0ifQ.04KZZVYMSB3lpPSby2Guqw`;
+
+    //     fetch(place_dest).then(function (response) {
+    //         return response.json();
+    //     }).then(function (obj) {
+            
+    //         var feat = obj.features
+    //         if (feat.length >= 3) {
+    //             setLugar_dest(feat[feat.length - 2].place_name);
+    //         } else {
+    //             setLugar_dest(feat[0].place_name);
+    //         }
+    //     });
+    // };
+
+    // destino();
+
+    // useEffect(() => {
+    //     const lat_ori = origin[0];
+    //     const long_ori = origin[1];
+
+    //     var place_ori = `https://api.mapbox.com/geocoding/v5/mapbox.places/${long_ori},${lat_ori}.json?access_token=pk.eyJ1IjoiY3NtZW5lc2VzIiwiYSI6ImNraWRueWxkZjB0cHQyeG80OHJ0cjhwMG0ifQ.04KZZVYMSB3lpPSby2Guqw`;
+
+    //     fetch(place_ori).then(function (response) {
+    //         return response.json();
+    //     }).then(function (obj) {
+            
+    //         var feat = obj.features
+    //         if (feat.length >= 3) {
+    //             setLugar_ori(feat[feat.length - 2].place_name);
+    //         } else {
+    //             setLugar_ori(feat[0].place_name);
+    //         }
+    //     });
+    // }, []);
+
+
+    useEffect(() => {
+        axios
+            .get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${origin[1]},${origin[0]}.json?access_token=pk.eyJ1IjoiY3NtZW5lc2VzIiwiYSI6ImNraWRueWxkZjB0cHQyeG80OHJ0cjhwMG0ifQ.04KZZVYMSB3lpPSby2Guqw`)
+            .then(res => {
+                var feat = res.data.features;
+                if (feat.length >= 3) {
+                    setLugar_ori(feat[feat.length - 2].place_name);
+                } else {
+                    setLugar_ori(feat[feat.length - 2].place_name);
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    });
+
+    useEffect(() => {
+        axios
+            .get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${destination[1]},${destination[0]}.json?access_token=pk.eyJ1IjoiY3NtZW5lc2VzIiwiYSI6ImNraWRueWxkZjB0cHQyeG80OHJ0cjhwMG0ifQ.04KZZVYMSB3lpPSby2Guqw`)
+            .then(res => {
+                var feat = res.data.features;
+                if (feat.length >= 3) {
+                    setLugar_dest(feat[feat.length - 2].place_name);
+                } else {
+                    setLugar_dest(feat[feat.length - 2].place_name);
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    });
+
+    return (
+        <div className="flight">
+            <h3>Flight {code}</h3>
+            <p><b>Airline:</b> {airline}</p>
+            <p><b>Destination:</b> {lugar_dest}</p>
+            {/* Pasar a palabras */}
+            <p><b>Origin:</b> {lugar_ori}</p>
+            <p><b>Passengers:</b></p>
+            {passengers.map(({name, age}) => (
+                <div key={uuidv4()}>
+                    <ul>
+                        <li>{name} ({age})</li>
+                    </ul>
+                </div>
+            ))}
+            <p><b>Plane:</b> {plane}</p>
+            <p><b>Seats:</b> {seats}</p>
+        </div>
+    );
+}
+
+export default Flight;

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import io from 'socket.io-client';
 
-import Map from './Map/Map'
 import Info from './Info/Info'
 import Messages from './Messages/Messages'
 
 import './Home.css';
+import MyMap from "./MyMap/MyMap";
 
 const ENDPOINT = 'wss://tarea-3-websocket.2021-1.tallerdeintegracion.cl/';
 
@@ -13,11 +13,12 @@ let socket;
 
 // const { v4: uuidv4 } = require('uuid');
 
-const Home = ({ location }) => {
+const Home = () => {
 
     const [name, setName] = useState('');
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
+    const [flights, setFlights] = useState([]);
 
     useEffect(() => {
     socket = io(ENDPOINT, {path: '/flights'});
@@ -32,22 +33,13 @@ const Home = ({ location }) => {
         });
     }, []);
 
-    //! Enviar mensaje
-    // useEffect(() => {
-    //     socket.emit('CHAT', {name: "El Sujeto", message: "Buena"});
-    // }, []);
-
-    //! Pedir flights
-    // useEffect(() => {
-    //     socket.emit('FLIGHTS');
-    // });
-
-    //! Recibir flights
-    // useEffect(() => {
-    //     socket.on('FLIGHTS', flights => {
-    //         console.log(flights);
-    //     });
-    // });
+    // Recibir flights
+    useEffect(() => {
+        socket.on('FLIGHTS', flights => {
+            console.log(flights);
+            setFlights(flights);
+        });
+    }, []);
 
     //! Recibir position
     // useEffect(() => {
@@ -65,14 +57,19 @@ const Home = ({ location }) => {
         setMessage('');
     }
 
+    const askFlights = (event) => {
+        event.preventDefault();
+        console.log('Pidiendo vuelos');
+        socket.emit('FLIGHTS');
+    }
 
     return (
         <div className="home">
+            <h1>Control Center</h1>
 
-            <Map />
-            <Info />
+            <MyMap />
+            <Info askFlights={askFlights} flights={flights} />
 
-            <h1>Centro de Control</h1>
             <h2>Chat</h2>
             <div className="form-chat">
                 <form className="form">
