@@ -19,9 +19,12 @@ const Home = () => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [flights, setFlights] = useState([]);
+    const [planes, setPlanes] = useState([]);
+    
 
     useEffect(() => {
     socket = io(ENDPOINT, {path: '/flights'});
+    socket.emit('FLIGHTS')
     }, []);
     
     // Recibir mensaje
@@ -41,12 +44,24 @@ const Home = () => {
         });
     }, []);
 
+    
     //! Recibir position
-    // useEffect(() => {
-    //     socket.on('POSITION', pos => {
-    //         console.log(pos);
-    //     });
-    // });
+    useEffect(() => {
+        socket.on('POSITION', plane => {
+            setPlanes(planes => [ ...planes, plane ]);
+            // setCodes(codes => [ ...codes, plane.code]);
+            
+            // if(![...codes].includes(plane.code)){
+            //     setCodes(codes => [ ...codes, plane.code ]);
+            // } else {
+            //     setCodes(codes => [ ...codes, "AAAAAAAA"]);
+            // }
+            // if (!(codes.filter(e => e === 'INT471').length > 0)) {
+            //     setCodes(codes => [ ...codes, 'INT471']);
+            //     console.log("NO ESTAAAAA")
+            // }
+        });
+    }, []);
 
     const sendMessage = (event) => {
         event.preventDefault();
@@ -66,8 +81,7 @@ const Home = () => {
     return (
         <div className="home">
             <h1>Control Center</h1>
-
-            <MyMap />
+            <MyMap flights={flights} planes={planes} />
             <Info askFlights={askFlights} flights={flights} />
 
             <h2>Chat</h2>
