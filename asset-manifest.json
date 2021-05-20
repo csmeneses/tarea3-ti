@@ -1,26 +1,27 @@
 {
   "files": {
-    "main.css": "/tarea3-ti/static/css/main.4668b1ac.chunk.css",
-    "main.js": "/tarea3-ti/static/js/main.6feb9773.chunk.js",
-    "main.js.map": "/tarea3-ti/static/js/main.6feb9773.chunk.js.map",
+    "main.css": "/tarea3-ti/static/css/main.33639f3c.chunk.css",
+    "main.js": "/tarea3-ti/static/js/main.c9586007.chunk.js",
+    "main.js.map": "/tarea3-ti/static/js/main.c9586007.chunk.js.map",
     "runtime-main.js": "/tarea3-ti/static/js/runtime-main.f839afe5.js",
     "runtime-main.js.map": "/tarea3-ti/static/js/runtime-main.f839afe5.js.map",
-    "static/css/2.c1e28d34.chunk.css": "/tarea3-ti/static/css/2.c1e28d34.chunk.css",
-    "static/js/2.e27700d3.chunk.js": "/tarea3-ti/static/js/2.e27700d3.chunk.js",
-    "static/js/2.e27700d3.chunk.js.map": "/tarea3-ti/static/js/2.e27700d3.chunk.js.map",
+    "static/css/2.d832eb22.chunk.css": "/tarea3-ti/static/css/2.d832eb22.chunk.css",
+    "static/js/2.2a0be266.chunk.js": "/tarea3-ti/static/js/2.2a0be266.chunk.js",
+    "static/js/2.2a0be266.chunk.js.map": "/tarea3-ti/static/js/2.2a0be266.chunk.js.map",
     "index.html": "/tarea3-ti/index.html",
-    "static/css/2.c1e28d34.chunk.css.map": "/tarea3-ti/static/css/2.c1e28d34.chunk.css.map",
-    "static/css/main.4668b1ac.chunk.css.map": "/tarea3-ti/static/css/main.4668b1ac.chunk.css.map",
-    "static/js/2.e27700d3.chunk.js.LICENSE.txt": "/tarea3-ti/static/js/2.e27700d3.chunk.js.LICENSE.txt",
-    "static/js/main.6feb9773.chunk.js.LICENSE.txt": "/tarea3-ti/static/js/main.6feb9773.chunk.js.LICENSE.txt",
+    "static/css/2.d832eb22.chunk.css.map": "/tarea3-ti/static/css/2.d832eb22.chunk.css.map",
+    "static/css/main.33639f3c.chunk.css.map": "/tarea3-ti/static/css/main.33639f3c.chunk.css.map",
+    "static/js/2.2a0be266.chunk.js.LICENSE.txt": "/tarea3-ti/static/js/2.2a0be266.chunk.js.LICENSE.txt",
+    "static/js/main.c9586007.chunk.js.LICENSE.txt": "/tarea3-ti/static/js/main.c9586007.chunk.js.LICENSE.txt",
     "static/media/airport.e74b3de2.png": "/tarea3-ti/static/media/airport.e74b3de2.png",
+    "static/media/control-tower.45e97649.png": "/tarea3-ti/static/media/control-tower.45e97649.png",
     "static/media/plane.7d45d166.png": "/tarea3-ti/static/media/plane.7d45d166.png"
   },
   "entrypoints": [
     "static/js/runtime-main.f839afe5.js",
-    "static/css/2.c1e28d34.chunk.css",
-    "static/js/2.e27700d3.chunk.js",
-    "static/css/main.4668b1ac.chunk.css",
-    "static/js/main.6feb9773.chunk.js"
+    "static/css/2.d832eb22.chunk.css",
+    "static/js/2.2a0be266.chunk.js",
+    "static/css/main.33639f3c.chunk.css",
+    "static/js/main.c9586007.chunk.js"
   ]
 }
