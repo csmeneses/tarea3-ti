@@ -1,0 +1,32 @@
+.mensaje {
+    font-size: small;
+    margin-top: 5px;
+    border-radius: 15px;
+    border: 1px solid rgb(173, 173, 173);
+    padding-left: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-right: 2em;
+}
+
+.intro {
+    font-size: medium;
+    padding-left: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-right: 2em;
+}
+
+.card-mensaje {
+    font-size: small;
+    margin-top: 5px;
+    border-radius: 15px;
+    border: 1px solid rgb(173, 173, 173);
+}
+
+.card-texto {
+    padding-left: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-right: 2em;
+}

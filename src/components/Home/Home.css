@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(240, 240, 240);
+}
+
+h1 {
+    color: white;
+    background-color: #2A0087;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+h2 {
+    color: #2A0087;
+}
+
+.input {
+    margin-top: 8px;
+    height: 35px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.boton {
+    background-color: #EE1750;
+    border-color: #EE1750;
+}
+
+.boton:hover {
+    background-color: white;
+    color: #EE1750;
+    border-color: #EE1750;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+/* #EE1750 #2A0087 */

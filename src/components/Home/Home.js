@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import io from 'socket.io-client';
+import { Button, Container, Row, Col } from 'react-bootstrap';
+
 
 import Info from './Info/Info'
 import Messages from './Messages/Messages'
 
 import './Home.css';
 import MyMap from "./MyMap/MyMap";
+import logo from "./icons/control-tower.png"
 
 const ENDPOINT = 'wss://tarea-3-websocket.2021-1.tallerdeintegracion.cl/';
 
@@ -45,21 +48,10 @@ const Home = () => {
     }, []);
 
     
-    //! Recibir position
+    // Recibir position
     useEffect(() => {
         socket.on('POSITION', plane => {
             setPlanes(planes => [ ...planes, plane ]);
-            // setCodes(codes => [ ...codes, plane.code]);
-            
-            // if(![...codes].includes(plane.code)){
-            //     setCodes(codes => [ ...codes, plane.code ]);
-            // } else {
-            //     setCodes(codes => [ ...codes, "AAAAAAAA"]);
-            // }
-            // if (!(codes.filter(e => e === 'INT471').length > 0)) {
-            //     setCodes(codes => [ ...codes, 'INT471']);
-            //     console.log("NO ESTAAAAA")
-            // }
         });
     }, []);
 
@@ -80,32 +72,44 @@ const Home = () => {
 
     return (
         <div className="home">
-            <h1>Control Center</h1>
-            <MyMap flights={flights} planes={planes} />
-            <Info askFlights={askFlights} flights={flights} />
-
-            <h2>Chat</h2>
-            <div className="form-chat">
-                <form className="form">
-                    <input
-                    className="input"
-                    type="text"
-                    placeholder="Enter your name"
-                    value={name}
-                    onChange={({ target: { value } }) => setName(value)}
-                    />
-                    <input
-                    className="input"
-                    type="text"
-                    placeholder="Type a message..."
-                    value={message}
-                    onChange={({ target: { value } }) => setMessage(value)}
-                    onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
-                    />
-                    <button className="sendButton" onClick={e => sendMessage(e)}>Send</button>
-                </form>
-            </div>
-            <Messages messages={messages} />
+            <h1><img src={logo} className="logo" alt="site logo" />DCControl Center</h1>
+            <Container fluid>
+                <Row>
+                    <Col xs={8}>
+                        <MyMap flights={flights} planes={planes} />
+                    </Col>
+                    <Col xs={4}>
+                        <h2>Chat</h2>
+                        <Messages messages={messages} />
+                        <div className="form-chat">
+                            <form className="form">
+                                <input
+                                className="input"
+                                type="text"
+                                placeholder="Enter your name"
+                                value={name}
+                                onChange={({ target: { value } }) => setName(value)}
+                                />
+                                <input
+                                className="input"
+                                type="text"
+                                placeholder="Type a message..."
+                                value={message}
+                                onChange={({ target: { value } }) => setMessage(value)}
+                                onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
+                                />
+                                {' '}<Button className="boton" onClick={e => sendMessage(e)}>Send</Button>{' '}
+                            </form>
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <hr></hr>
+                        <Info askFlights={askFlights} flights={flights} />
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 }

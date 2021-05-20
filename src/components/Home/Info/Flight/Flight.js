@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Card, Table } from 'react-bootstrap';
 
 import axios from 'axios';
 
@@ -86,23 +87,36 @@ const Flight = ({ airline, code, destination, origin, passengers, plane, seats }
     //! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
     return (
-        <div className="flight">
-            <h3>Flight {code}</h3>
-            <p><b>Airline:</b> {airline}</p>
-            <p><b>Destination:</b> {destination[0]}, {destination[1]}</p>
-            {/* Pasar a palabras */}
-            <p><b>Origin:</b> {origin[0]}, {origin[1]}</p>
-            <p><b>Passengers:</b></p>
-            {passengers.map(({name, age}) => (
-                <div key={uuidv4()}>
-                    <ul>
-                        <li>{name} ({age})</li>
-                    </ul>
-                </div>
-            ))}
-            <p><b>Plane:</b> {plane}</p>
-            <p><b>Seats:</b> {seats}</p>
-        </div>
+        <Card>
+            <Card.Header>
+                {airline}
+            </Card.Header>
+            <Card.Body>
+                <Card.Title><b>Flight {code}</b></Card.Title>
+                <div><b>Destination:</b> {destination[0]}, {destination[1]}</div>
+                <div><b>Origin:</b> {origin[0]}, {origin[1]}</div>
+                <div><b>Plane:</b> {plane}</div>
+                <div><b>Seats:</b> {seats}</div>
+                <hr></hr>
+                <div className="pasajeros"><b>Passengers:</b></div>
+                <Table size="sm">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {passengers.map(({name, age}) => (
+                            <tr key={uuidv4()}>
+                                <td>{name}</td>
+                                <td>{age}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+            </Card.Body>
+        </Card>
     );
 }
 

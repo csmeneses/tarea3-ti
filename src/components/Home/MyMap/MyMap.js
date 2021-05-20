@@ -1,21 +1,10 @@
-import React, {useState} from "react";
-import {Map, TileLayer, Marker, Polyline} from 'react-leaflet'
-
-import L from 'leaflet'
+import React from "react";
+import {Map, TileLayer} from 'react-leaflet'
 
 import Spot from './Spot/Spot'
 import Plane from './Plane/Plane'
 
-import planeIcon from './icons/black-circle.png'
-
 const { v4: uuidv4 } = require('uuid');
-
-function getPlane(_spotSize) {
-    return new L.Icon({
-        iconUrl: planeIcon,
-        iconSize: [_spotSize, _spotSize]
-    })
-}
 
 const MyMap = ({ flights, planes }) => {
     const position = [-37, -67];
@@ -49,7 +38,6 @@ const MyMap = ({ flights, planes }) => {
                 {codes.map((code) => (
                     <Plane key={uuidv4()} code={code} planes={planes} />
                 ))}
-
             </Map>
         </div>
     );
